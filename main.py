@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import random
 
 app = Flask(__name__)
@@ -13,10 +13,33 @@ gifts = [
         "price": 59.99,
         "ULRImage":"https://www.lego.com/cdn/cs/set/assets/blt52d7fce5233e7f7f/76300_Prod_en-gb.png?fit=crop&quality=80&width=400&height=400&dpr=1"
     }
-]
+]taikhoan = []
+
 @app.route('/', methods=['GET'])
 def home():
     return jsonify({"message": "Hello, World!"})
+
+@app.route('/register', methods=['POST'])
+def register():
+    user_name = request.json.get('username')
+    password = request.json.get('password')
+
+    
+    # Thêm username và password vào mảng tài khoản
+    if user_name and password:
+        taikhoan.append({
+            'username': user_name,
+            'password': password,
+            'spins': 1
+        })
+        return jsonify({
+            "message": "User registered successfully!",
+            "accounts": taikhoan
+        })
+    else:
+        return jsonify({"message": "Username and password are required!"}), 400
+    
+
 @app.route('/random-gifts', methods=['GET'])
 def random_gifts():
     random_gift = random.choices(gifts, weights=[gift["price"] for gift in gifts])
