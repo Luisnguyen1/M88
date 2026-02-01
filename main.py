@@ -13,7 +13,8 @@ gifts = [
         "price": 59.99,
         "ULRImage":"https://www.lego.com/cdn/cs/set/assets/blt52d7fce5233e7f7f/76300_Prod_en-gb.png?fit=crop&quality=80&width=400&height=400&dpr=1"
     }
-]taikhoan = []
+]
+taikhoan = []
 
 @app.route('/', methods=['GET'])
 def home():
