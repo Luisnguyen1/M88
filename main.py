@@ -26,6 +26,17 @@ def register():
         })
     else:
         return jsonify({"message": "Username and password are required!"}), 400
-    
+@app.route('/login', methods=['POST'])
+def login():
+    user_name = request.json.get('username')
+    password = request.json.get('password')
+
+    for account in taikhoan:
+        if account['username'] == user_name and account['password'] == password:
+            return jsonify({
+                "message": "Login successful!",
+                "account": account
+            })
+    return jsonify({"message": "Invalid username or password!"}), 401
 
 app.run()
