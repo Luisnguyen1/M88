@@ -67,9 +67,6 @@ def add_gift(gift_name, gift_price, gift_image):
     }
     gifts.append(new_gift)
     return jsonify({"message": f"Gift '{gift_name}' added successfully!"})
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
 
 @app.route('/api/gifts/<int:gift_id>', methods=['PUT'])
 def update_gift(gift_id):
@@ -86,4 +83,28 @@ def update_gift(gift_id):
     }), 200
 
 
+@app.route('/buy-spin', methods=['POST'])
+def buy_spin():
+    user_name = request.json.get('username')
+    
+    for account in taikhoan:
+        if account['username'] == user_name:
+            account['spins'] += 1
+            return jsonify({
+                "message": "Buy spin successfully!",
+                "username": user_name,
+                "spins": account['spins']
+            })
+
+    return jsonify({"message": "User not found!"}), 404
+@app.route('/spins/<username>', methods=['GET'])
+def get_spins(username):
+    for account in taikhoan:
+        if account['username'] == username:
+            return jsonify({
+                "username": username,
+                "spins": account['spins']
+            })
+
+    return jsonify({"message": "User not found!"}), 404
 app.run()
