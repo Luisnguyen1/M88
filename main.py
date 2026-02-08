@@ -6,12 +6,14 @@ gifts = [
     {
         "name": "Teddy Bear",
         "price": 29.99,
-        "ULRImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_KfcishZysQ2FS-ryOUqW7BJomtsbw_jhcQ&s"
+        "ULRImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_KfcishZysQ2FS-ryOUqW7BJomtsbw_jhcQ&s",
+        "id": 1
     },
     {
         "name": "Lego Set",
         "price": 59.99,
-        "ULRImage":"https://www.lego.com/cdn/cs/set/assets/blt52d7fce5233e7f7f/76300_Prod_en-gb.png?fit=crop&quality=80&width=400&height=400&dpr=1"
+        "ULRImage":"https://www.lego.com/cdn/cs/set/assets/blt52d7fce5233e7f7f/76300_Prod_en-gb.png?fit=crop&quality=80&width=400&height=400&dpr=1",
+        "id": 2
     }
 ]
 taikhoan = []
