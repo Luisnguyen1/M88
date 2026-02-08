@@ -69,6 +69,22 @@ def add_gift(gift_name, gift_price, gift_image):
     }
     gifts.append(new_gift)
     return jsonify({"message": f"Gift '{gift_name}' added successfully!"})
+
+@app.route('/api/gifts/<int:gift_id>', methods=['PUT'])
+def update_gift(gift_id):
+    data = request.get_json()
+
+    name = data.get('name')
+    url_image = data.get('ULRImage')
+    price = data.get('price')
+
+    return jsonify({
+        "message": "Gift updated successfully",
+        "gift_id": gift_id,
+        "data": data
+    }), 200
+
+
 @app.route('/buy-spin', methods=['POST'])
 def buy_spin():
     user_name = request.json.get('username')
